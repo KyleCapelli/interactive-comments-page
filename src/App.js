@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import data from "./data/data.json";
 
-function App() {
+import { Comment, Post, Replies } from "./components";
+
+import "./App.css";
+
+const App = () => {
+  console.log(data);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {data.comments.map((comment) => {
+        return (
+          <div>
+            <Comment
+              comment={comment}
+              currentUser={data.currentUser.username}
+            />
+            {comment.replies.length > 0 && (
+              <Replies
+                replies={comment.replies}
+                currentUser={data.currentUser.username}
+              />
+            )}
+          </div>
+        );
+      })}
+      <Post currentUser={data.currentUser} />
+    </>
   );
-}
+};
 
 export default App;
