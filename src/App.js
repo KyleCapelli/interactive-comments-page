@@ -17,12 +17,7 @@ const App = () => {
 
   useEffect(() => {
     if (storage) {
-      console.log(storage.createdAt);
       data.comments.push(storage);
-      for (let comment of data.comments) {
-        console.log(comment.createdAt);
-      }
-      console.log(data);
     }
     setStorage("");
   }, [storage]);
@@ -50,7 +45,6 @@ const App = () => {
 
   useEffect(() => {
     if (updateCommentStorage) {
-      console.log(updateCommentStorage.id);
       for (let comment of data.comments) {
         if (comment.id === updateCommentStorage.id) {
           comment.content = updateCommentStorage.content;
@@ -73,9 +67,8 @@ const App = () => {
 
   useEffect(() => {
     if (repliesReplyStorage) {
-      console.log(repliesReplyStorage);
       for (let comment of data.comments) {
-        comment.replies.map((reply) => {
+        comment.replies.forEach((reply) => {
           if (reply.id === repliesReplyStorage.postId) {
             comment.replies.push(repliesReplyStorage);
           }
@@ -87,9 +80,8 @@ const App = () => {
 
   useEffect(() => {
     if (repliesUpdateCommentStorage) {
-      console.log(repliesUpdateCommentStorage);
       for (let comment of data.comments) {
-        comment.replies.map((reply) => {
+        comment.replies.forEach((reply) => {
           if (reply.id === repliesUpdateCommentStorage.id) {
             reply.content = repliesUpdateCommentStorage.content;
           }
@@ -103,7 +95,7 @@ const App = () => {
     <>
       {data.comments.map((comment) => {
         return (
-          <div>
+          <div key={comment.id}>
             <Comment
               comment={comment}
               currentUser={data.currentUser}
@@ -114,6 +106,7 @@ const App = () => {
             {comment.replies.map((reply, index) => {
               return (
                 <Replies
+                  key={reply.id}
                   reply={reply}
                   totalReplies={comment.replies.length}
                   index={index}

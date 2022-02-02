@@ -76,7 +76,6 @@ const Comment = ({
   };
 
   const onReplyClick = () => {
-    console.log("clicked");
     setReplyClick(!replyClick);
   };
 
@@ -109,7 +108,10 @@ const Comment = ({
         />
         <div className="comments__comment-contents">
           <div className="comments__comment-userdetails-container">
-            <img src={getImageURL(comment.user.username)}></img>
+            <img
+              src={getImageURL(comment.user.username)}
+              alt={comment.user.username}
+            />
             <a>{comment.user.username}</a>
             {currentUser.username === comment.user.username ? (
               <p className="comments__comment-current-user">you</p>
@@ -162,7 +164,10 @@ const Comment = ({
       {replyClick ? (
         <div className="post__content-container">
           <div className="post__avatar-image">
-            <img src={getImageURL(currentUser.username)} />
+            <img
+              src={getImageURL(currentUser.username)}
+              alt={currentUser.username}
+            />
           </div>
           <div className="post__text-area-form">
             <textarea

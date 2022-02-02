@@ -51,7 +51,10 @@ const Post = ({ currentUser, setStorage }) => {
   return (
     <div className="post__content-container">
       <div className="post__avatar-image">
-        <img src={getImageURL(currentUser.username)} />
+        <img
+          src={getImageURL(currentUser.username)}
+          alt={currentUser.username}
+        />
       </div>
       <div className="post__text-area-form">
         <textarea

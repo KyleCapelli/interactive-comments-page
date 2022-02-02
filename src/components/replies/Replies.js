@@ -3,17 +3,7 @@ import "./Replies.css";
 import { v4 as uuidv4 } from "uuid";
 import ScoreButton from "../scoreButton/ScoreButton";
 
-import {
-  Max,
-  Amy,
-  Juli,
-  Ramses,
-  Plus,
-  Minus,
-  Reply,
-  Delete,
-  Edit,
-} from "../imports";
+import { Max, Amy, Juli, Ramses, Reply, Delete, Edit } from "../imports";
 
 const Replies = ({
   reply,
@@ -24,7 +14,6 @@ const Replies = ({
   setRepliesReplyStorage,
   setRepliesUpdateCommentStorage,
 }) => {
-  const [score, setScore] = useState(reply.score);
   const [replyClick, setReplyClick] = useState(false);
   const [replyTextAreaValue, setReplyTextAreaValue] = useState("");
   const [editClick, setEditClick] = useState(false);
@@ -89,20 +78,7 @@ const Replies = ({
     setEditClick(false);
   };
 
-  const increment = () => {
-    if (currentUser.username === reply.user.username) return;
-    reply.score += 1;
-    setScore(reply.score);
-  };
-
-  const decrement = () => {
-    if (currentUser.username === reply.user.username) return;
-    reply.score -= 1;
-    setScore(reply.score);
-  };
-
   const onReplyClick = () => {
-    console.log("clicked");
     setReplyClick(!replyClick);
   };
 
@@ -112,7 +88,6 @@ const Replies = ({
 
   const onEditClick = () => {
     setEditClick(!editClick);
-    console.log("clicked");
   };
 
   const onEditTextAreaChange = (event) => {
@@ -140,7 +115,10 @@ const Replies = ({
         />
         <div className="replies__comment-contents">
           <div className="replies__comment-userdetails-container">
-            <img src={getImageURL(reply.user.username)}></img>
+            <img
+              src={getImageURL(reply.user.username)}
+              alt={reply.user.username}
+            />
             <a>{reply.user.username}</a>
             {currentUser.username === reply.user.username ? (
               <p className="replies__comment-current-user">you</p>
@@ -200,7 +178,10 @@ const Replies = ({
             ${index !== totalReplies - 1 && "not-last"}`}
           ></div>
           <div className="post__avatar-image">
-            <img src={getImageURL(currentUser.username)} />
+            <img
+              src={getImageURL(currentUser.username)}
+              alt={currentUser.username}
+            />
           </div>
           <div className="post__text-area-form">
             <textarea
