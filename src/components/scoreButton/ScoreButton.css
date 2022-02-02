@@ -1,0 +1,50 @@
+.score {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: hsl(228, 33%, 97%);
+  border-radius: 20px;
+  min-width: 50px;
+  height: 120px;
+  margin: auto;
+}
+
+.score p {
+  color: hsl(238, 40%, 52%);
+  font-weight: 500;
+}
+
+.score__increment,
+.score__decrement {
+  cursor: pointer;
+}
+
+.score__increment:hover,
+.score__decrement:hover {
+  opacity: 0.7;
+}
+
+.score__increment svg,
+.score__decrement svg {
+  display: block;
+  margin: auto;
+}
+
+@media screen and (max-width: 1060px) {
+  .score {
+    flex-direction: row;
+    min-width: 120px;
+    max-height: 50px;
+    position: absolute;
+    bottom: 17px;
+    left: 15px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .score {
+    min-width: 100px;
+    max-height: 50px;
+  }
+}
