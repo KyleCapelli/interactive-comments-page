@@ -16,7 +16,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://interactive-comments-page-pjts8aifn-kylecapelli.vercel.app/)
+- Live Site URL: [Interactive Comments Page](https://interactive-comments-page-pjts8aifn-kylecapelli.vercel.app/)
 
 ## My process
 
